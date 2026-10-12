@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:lab_rpg_igoshin_imashev/characters.dart';
 import 'package:lab_rpg_igoshin_imashev/character.dart';
 import 'package:lab_rpg_igoshin_imashev/battle.dart';
@@ -12,9 +13,13 @@ void printClasses() {
 }
 
 Character selectCharacter(String prompt) {
-  stdout.write('$prompt — введите имя персонажа: ');
+  stdout.write(
+    '$prompt — введите имя персонажа: ',
+  );
   String? name = stdin.readLineSync();
-  name = (name == null || name.trim().isEmpty) ? 'Герой' : name.trim();
+  name = (name == null || name.trim().isEmpty)
+      ? 'Герой'
+      : name.trim();
 
   printClasses();
 
@@ -29,7 +34,9 @@ Character selectCharacter(String prompt) {
       case '3':
         return Archer(name: name);
       default:
-        print('Неверный выбор. Введите 1, 2 или 3.');
+        print(
+          'Неверный выбор. Введите 1, 2 или 3.',
+        );
     }
   }
 }
@@ -42,10 +49,10 @@ void main() {
 
   battle(player, enemy);
 
-  stdout.write('Сыграть ещё раз? (да/нет): ');
+  stdout.write('Сыграть ещё раз? (yes/no): ');
   String? again = stdin.readLineSync();
 
-  if (again?.trim().toLowerCase() == 'да') {
+  if (again?.trim().toLowerCase() == 'yes') {
     main();
   } else {
     print('Спасибо за игру!');
